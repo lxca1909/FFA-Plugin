@@ -1,0 +1,10 @@
+name: FFA-Plugin
+version: ${project.version}
+main: de.lxca1909.ffaplugin.Main
+api-version: 1.16
+authors: [ lxca1909 ]
+description: FFA Plugin von lxca1909
+commands:
+  kits:
+  build:
+  test:
