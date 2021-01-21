@@ -72,13 +72,4 @@ public class Claw implements Listener {
             }
         }
     }
-
-    @EventHandler
-    public void onDamage(EntityDamageEvent e) {
-        if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
-            if (Kits.KangarooKit.contains(e.getEntity().getName())) {
-                e.setCancelled(true);
-            }
-        }
-    }
 }
