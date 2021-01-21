@@ -21,7 +21,7 @@ public class Holzfaeller implements Listener {
                 breakBlock(e.getBlock());
             }
     }
-    static void breakBlock(Block b) {
+    void breakBlock(Block b) {
         if(b.getType() != Material.OAK_LOG && b.getType() != Material.SPRUCE_LOG && b.getType() != Material.BIRCH_LOG && b.getType() != Material.JUNGLE_LOG && b.getType() != Material.ACACIA_LOG && b.getType() != Material.DARK_OAK_LOG && b.getType() != Material.CRIMSON_STEM && b.getType() != Material.WARPED_STEM && b.getType() != Material.STRIPPED_ACACIA_LOG && b.getType() != Material.STRIPPED_ACACIA_WOOD && b.getType() != Material.STRIPPED_BIRCH_LOG && b.getType() != Material.STRIPPED_BIRCH_WOOD && b.getType() != Material.STRIPPED_CRIMSON_STEM && b.getType() != Material.STRIPPED_CRIMSON_HYPHAE && b.getType() != Material.STRIPPED_DARK_OAK_LOG && b.getType() != Material.STRIPPED_DARK_OAK_WOOD && b.getType() != Material.STRIPPED_JUNGLE_LOG && b.getType() != Material.STRIPPED_JUNGLE_WOOD && b.getType() != Material.STRIPPED_OAK_LOG && b.getType() != Material.STRIPPED_OAK_WOOD && b.getType() != Material.STRIPPED_SPRUCE_LOG && b.getType() != Material.STRIPPED_SPRUCE_WOOD && b.getType() != Material.STRIPPED_WARPED_STEM && b.getType() != Material.STRIPPED_WARPED_HYPHAE)return;
         b.getWorld().playSound(b.getLocation(), Sound.BLOCK_WOOD_HIT, 1, 1);
         b.breakNaturally();
