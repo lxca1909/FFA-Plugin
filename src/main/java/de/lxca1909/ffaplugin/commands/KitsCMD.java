@@ -40,6 +40,16 @@ public class KitsCMD implements CommandExecutor {
         NinjaMeta.setDisplayName("§6Ninja");
         Ninja.setItemMeta(NinjaMeta);
 
+        ItemStack Revive = new ItemStack(Material.TOTEM_OF_UNDYING);
+        ItemMeta RVMeta = Revive.getItemMeta();
+        RVMeta.setDisplayName("§6Revive");
+        Revive.setItemMeta(RVMeta);
+
+        ItemStack Telekinese = new ItemStack(Material.STRING);
+        ItemMeta tmeta = Telekinese.getItemMeta();
+        tmeta.setDisplayName("§6Telekinese");
+        Telekinese.setItemMeta(tmeta);
+
         //Rare
         ItemStack Holzfaeller = new ItemStack(Material.WOODEN_AXE);
         ItemMeta HFMeta = Holzfaeller.getItemMeta();
@@ -60,11 +70,6 @@ public class KitsCMD implements CommandExecutor {
         ClawMeta.setDisplayName("§9Claw");
         Claw.setItemMeta(ClawMeta);
 
-        ItemStack Revive = new ItemStack(Material.TOTEM_OF_UNDYING);
-        ItemMeta RVMeta = Revive.getItemMeta();
-        RVMeta.setDisplayName("§6Revive");
-        Revive.setItemMeta(RVMeta);
-
         //Set Kits
         inv.setItem(0, Avatar);
         inv.setItem(1, Stomper);
@@ -73,6 +78,7 @@ public class KitsCMD implements CommandExecutor {
         inv.setItem(4, Kangaroo);
         inv.setItem(5, Claw);
         inv.setItem(6, Revive);
+        inv.setItem(7, Telekinese);
         p.openInventory(inv);
         return false;
     }

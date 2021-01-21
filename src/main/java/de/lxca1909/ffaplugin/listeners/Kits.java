@@ -32,6 +32,7 @@ public class Kits implements Listener {
     public static ArrayList<String> KangarooKit = new ArrayList<>();
     public static ArrayList<String> ClawKit = new ArrayList<>();
     public static ArrayList<String> ReviveKit = new ArrayList<>();
+    public static ArrayList<String> TelekineseKit = new ArrayList<>();
     @EventHandler
     public void onInteract(PlayerInteractEvent event){
         Player p = event.getPlayer();
@@ -68,6 +69,11 @@ public class Kits implements Listener {
                     RVMeta.setDisplayName("§6Revive");
                     Revieve.setItemMeta(RVMeta);
 
+                    ItemStack Telekinese = new ItemStack(Material.STRING);
+                    ItemMeta tmeta = Telekinese.getItemMeta();
+                    tmeta.setDisplayName("§6Telekinese");
+                    Telekinese.setItemMeta(tmeta);
+
                     //Rare
                     ItemStack Holzfaeller = new ItemStack(Material.STONE_AXE);
                     ItemMeta HFMeta = Holzfaeller.getItemMeta();
@@ -96,6 +102,7 @@ public class Kits implements Listener {
                     inv.setItem(4, Kangaroo);
                     inv.setItem(5, Claw);
                     inv.setItem(6, Revieve);
+                    inv.setItem(7, Telekinese);
                     p.openInventory(inv);
 
                 }
@@ -145,6 +152,11 @@ public class Kits implements Listener {
         RVMeta.setDisplayName("§6Revive");
         Revive.setItemMeta(RVMeta);
 
+        ItemStack Telekinese = new ItemStack(Material.STRING);
+        ItemMeta tmeta = Telekinese.getItemMeta();
+        tmeta.setDisplayName("§6Telekinese");
+        Telekinese.setItemMeta(tmeta);
+
         ItemStack tracker = new ItemStack(Material.COMPASS);
         ItemMeta trackermeta = tracker.getItemMeta();
         trackermeta.setDisplayName("§fTracker §8(Rechtsclick)");
@@ -165,6 +177,7 @@ public class Kits implements Listener {
                             p.teleport(loc);
                             AvatarKit.add(p.getName());
                             NinjaKit.remove(p.getName());
+                            TelekineseKit.remove(p.getName());
                             StomperKit.remove(p.getName());
                             HolzfaellerKit.remove(p.getName());
                             ReviveKit.remove(p.getName());
@@ -186,6 +199,7 @@ public class Kits implements Listener {
                             }
                             p.teleport(loc);
                             AvatarKit.remove(p.getName());
+                            TelekineseKit.remove(p.getName());
                             StomperKit.add(p.getName());
                             NinjaKit.remove(p.getName());
                             HolzfaellerKit.remove(p.getName());
@@ -208,6 +222,7 @@ public class Kits implements Listener {
                                 loc.setY(loc.getY()-52);
                             }
                             p.teleport(loc);
+                            TelekineseKit.remove(p.getName());
                             NinjaKit.add(p.getName());
                             AvatarKit.remove(p.getName());
                             ReviveKit.remove(p.getName());
@@ -234,6 +249,7 @@ public class Kits implements Listener {
                             NinjaKit.remove(p.getName());
                             AvatarKit.remove(p.getName());
                             KangarooKit.remove(p.getName());
+                            TelekineseKit.remove(p.getName());
                             StomperKit.remove(p.getName());
                             ClawKit.remove(p.getName());
                             ReviveKit.remove(p.getName());
@@ -254,6 +270,7 @@ public class Kits implements Listener {
                             p.teleport(loc);
                             HolzfaellerKit.remove(p.getName());
                             NinjaKit.remove(p.getName());
+                            TelekineseKit.remove(p.getName());
                             AvatarKit.remove(p.getName());
                             ClawKit.remove(p.getName());
                             KangarooKit.add(p.getName());
@@ -278,6 +295,7 @@ public class Kits implements Listener {
                             NinjaKit.remove(p.getName());
                             StomperKit.remove(p.getName());
                             HolzfaellerKit.remove(p.getName());
+                            TelekineseKit.remove(p.getName());
                             KangarooKit.remove(p.getName());
                             ReviveKit.remove(p.getName());
                             p.getInventory().clear();
@@ -302,6 +320,31 @@ public class Kits implements Listener {
                             KangarooKit.remove(p.getName());
                             ClawKit.remove(p.getName());
                             ReviveKit.add(p.getName());
+                            TelekineseKit.remove(p.getName());
+                            p.getInventory().clear();
+//                            p.getInventory().setItem(1, Revive);
+                            p.getInventory().setItemInOffHand(Revive);
+                            p.getInventory().setItem(8, tracker);
+                            p.closeInventory();
+                        }
+                    }
+                    if(event.getCurrentItem().getType() == Material.STRING) {
+                        if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Telekinese")) {
+                            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§7Du hast "+ event.getCurrentItem().getItemMeta().getDisplayName() +" §7ausgewählt"));
+                            Location loc = p.getLocation();
+                            Block b = event.getWhoClicked().getWorld().getBlockAt(event.getWhoClicked().getLocation().subtract(0, 2, 0));
+                            if(b.getType().equals(Material.AIR)){
+                                loc.setY(loc.getY()-52);
+                            }
+                            p.teleport(loc);
+                            AvatarKit.remove(p.getName());
+                            NinjaKit.remove(p.getName());
+                            StomperKit.remove(p.getName());
+                            HolzfaellerKit.remove(p.getName());
+                            KangarooKit.remove(p.getName());
+                            ClawKit.remove(p.getName());
+                            ReviveKit.remove(p.getName());
+                            TelekineseKit.add(p.getName());
                             p.getInventory().clear();
 //                            p.getInventory().setItem(1, Revive);
                             p.getInventory().setItemInOffHand(Revive);

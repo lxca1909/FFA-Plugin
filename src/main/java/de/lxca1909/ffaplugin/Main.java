@@ -58,6 +58,8 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new Claw(), this);
         //Revive
         pluginManager.registerEvents(new Revive(), this);
+        //Telekinese
+        pluginManager.registerEvents(new Telekinese(), this);
     }
     public static Main getMain() {
         return main;
