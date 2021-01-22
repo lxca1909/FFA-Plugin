@@ -69,7 +69,7 @@ public class Kits implements Listener {
                     RVMeta.setDisplayName("§6Revive");
                     Revieve.setItemMeta(RVMeta);
 
-                    ItemStack Telekinese = new ItemStack(Material.STRING);
+                    ItemStack Telekinese = new ItemStack(Material.FEATHER);
                     ItemMeta tmeta = Telekinese.getItemMeta();
                     tmeta.setDisplayName("§6Telekinese");
                     Telekinese.setItemMeta(tmeta);

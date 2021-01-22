@@ -45,7 +45,7 @@ public class KitsCMD implements CommandExecutor {
         RVMeta.setDisplayName("§6Revive");
         Revive.setItemMeta(RVMeta);
 
-        ItemStack Telekinese = new ItemStack(Material.STRING);
+        ItemStack Telekinese = new ItemStack(Material.FEATHER);
         ItemMeta tmeta = Telekinese.getItemMeta();
         tmeta.setDisplayName("§6Telekinese");
         Telekinese.setItemMeta(tmeta);
