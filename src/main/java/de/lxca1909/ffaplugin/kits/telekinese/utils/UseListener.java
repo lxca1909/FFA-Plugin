@@ -33,25 +33,14 @@ public class UseListener implements Listener {
 
     @EventHandler
     public void onItemUse(PlayerInteractEvent event) {
-        if (!checkAlmightyHandEvent(event))
-            return;
+        if (checkAlmightyHandEvent(event)) return;
         Player player = event.getPlayer();
         String requiredPermission = Permissions.forAlmightyHandUse();
-        if (!Permissions.hasPermission((CommandSender)player, requiredPermission)) {
-            player.sendMessage(ChatColor.RED + "You do not have permission to use this item.");
-            return;
-        }
         if (endTelekinesis(player, "&7You stopped using your &emagical powers&7."))
             return;
         LivingEntity target = LocationUtil.getEntityInLineOfSight((LivingEntity)player, 12.0D);
         if (target == null)
             return;
-        String permissionToControlTarget = Permissions.forEntityType(target.getType());
-        String permissionToControlAllTargets = Permissions.forAllEntityTypes();
-        if (!Permissions.hasPermission((CommandSender)player, permissionToControlTarget) && !Permissions.hasPermission((CommandSender)player, permissionToControlAllTargets)) {
-            player.sendMessage(ChatColor.RED + "You are not able to control this type of target.");
-            return;
-        }
         startTelekinesisThroughAlmightyHand(player, target);
         event.setCancelled(true);
     }

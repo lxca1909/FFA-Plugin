@@ -1,6 +1,8 @@
 package de.lxca1909.ffaplugin.kits.telekinese;
 
 import de.lxca1909.ffaplugin.Main;
+import de.lxca1909.ffaplugin.kits.telekinese.utils.LocationUtil;
+import de.lxca1909.ffaplugin.kits.telekinese.utils.UseListener;
 import de.lxca1909.ffaplugin.listeners.Kits;
 import de.lxca1909.ffaplugin.util.Vector3D;
 import org.bukkit.Bukkit;
@@ -11,6 +13,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,44 +33,24 @@ public class Telekinese implements Listener {
 
     @EventHandler
     public void on(PlayerInteractEvent e) {
-        Player observer= e.getPlayer();
-        if (Kits.TelekineseKit.contains(observer.getName())) {
+        Player p = e.getPlayer();
+        if (Kits.TelekineseKit.contains(p.getName())) {
                 if (e.getItem() == null) {
                     e.setCancelled(true);
                     if (e.getPlayer().getGameMode() != GameMode.CREATIVE) {
-                        if (cooldowns.containsKey(observer.getName())) {
-                            if (cooldowns.get(observer.getName()) > System.currentTimeMillis()) {
-                                long timeleft = (cooldowns.get(observer.getName()) - System.currentTimeMillis()) / 1000;
-                                observer.sendMessage("§cDeine Fähigkeit ist in §4" + timeleft + "s §cwieder bereit");
+                        if (cooldowns.containsKey(p.getName())) {
+                            if (cooldowns.get(p.getName()) > System.currentTimeMillis()) {
+                                long timeleft = (cooldowns.get(p.getName()) - System.currentTimeMillis()) / 1000;
+                                p.sendMessage("§cDeine Fähigkeit ist in §4" + timeleft + "s §cwieder bereit");
                                 return;
                             }
                         }
-                        cooldowns.put(observer.getName(), System.currentTimeMillis() + (30 * 1000));
+                        cooldowns.put(p.getName(), System.currentTimeMillis() + (30 * 1000));
                         if(e.getAction() == Action.RIGHT_CLICK_AIR){
-                            if(observer.getInventory().getItemInMainHand().getType() == null){
-
-                                Location observerpos = observer.getEyeLocation();
-                                Vector3D observerdir = new Vector3D(observerpos.getDirection());
-
-                                Vector3D observerStart = new Vector3D(observerpos);
-                                Vector3D observerend = observerStart.add(observerdir.multiply(ATTACK_REACH));
-
-                                Player hit = null;
-
-                                for(Player target : observer.getWorld().getPlayers()){
-                                    Vector3D targetPos = new Vector3D(target.getLocation());
-                                    Vector3D min = targetPos.add(-0.5, 0, -0.5);
-                                    Vector3D max = targetPos.add(0.5, 1.67, 0.5);
-                                    if(target != observer && hasIntersection(observerStart, observerend, min, max)){
-                                        if(hit == null ||
-                                        hit.getLocation().distanceSquared(observerpos) >
-                                                target.getLocation().distanceSquared(observerpos)){
-                                                hit = target;
-                                            }
-                                        }
-                                    }
-                                if(hit != null){
-                                    hit.damage(5, observer);
+                            if(p.getInventory().getItemInMainHand().getType() == Material.FEATHER){
+                                LivingEntity target = LocationUtil.getEntityInLineOfSight((LivingEntity)p, 12.0D);
+                                if(target==null){
+                                    UseListener.
                                 }
                             }
                         }

@@ -1,11 +1,9 @@
 package de.lxca1909.ffaplugin.listeners;
 
+import de.lxca1909.ffaplugin.kits.telekinese.utils.ItemDb;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -152,9 +150,9 @@ public class Kits implements Listener {
         RVMeta.setDisplayName("§6Revive");
         Revive.setItemMeta(RVMeta);
 
-        ItemStack Telekinese = new ItemStack(Material.STRING);
+        ItemStack Telekinese = new ItemStack(Material.FEATHER);
         ItemMeta tmeta = Telekinese.getItemMeta();
-        tmeta.setDisplayName("§6Telekinese");
+        tmeta.setDisplayName(ChatColor.GOLD + "Almighty Hand Item");
         Telekinese.setItemMeta(tmeta);
 
         ItemStack tracker = new ItemStack(Material.COMPASS);
@@ -328,7 +326,7 @@ public class Kits implements Listener {
                             p.closeInventory();
                         }
                     }
-                    if(event.getCurrentItem().getType() == Material.STRING) {
+                    if(event.getCurrentItem().getType() == Material.FEATHER) {
                         if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Telekinese")) {
                             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§7Du hast "+ event.getCurrentItem().getItemMeta().getDisplayName() +" §7ausgewählt"));
                             Location loc = p.getLocation();
@@ -347,7 +345,8 @@ public class Kits implements Listener {
                             TelekineseKit.add(p.getName());
                             p.getInventory().clear();
 //                            p.getInventory().setItem(1, Revive);
-                            p.getInventory().setItemInOffHand(Revive);
+//                            ItemDb.getItem();
+                            p.getInventory().setItemInOffHand(Telekinese);
                             p.getInventory().setItem(8, tracker);
                             p.closeInventory();
                         }
