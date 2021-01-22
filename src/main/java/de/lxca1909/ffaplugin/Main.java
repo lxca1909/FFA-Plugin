@@ -4,6 +4,8 @@ import de.lxca1909.ffaplugin.commands.Build;
 import de.lxca1909.ffaplugin.commands.KitsCMD;
 import de.lxca1909.ffaplugin.commands.TestCMD;
 import de.lxca1909.ffaplugin.kits.*;
+import de.lxca1909.ffaplugin.kits.telekinese.Telekinese;
+import de.lxca1909.ffaplugin.kits.telekinese.utils.UseListener;
 import de.lxca1909.ffaplugin.listeners.*;
 import de.lxca1909.ffaplugin.recipe.RecipeLoader;
 import de.lxca1909.ffaplugin.util.PlayerCompass;
@@ -59,7 +61,7 @@ public final class Main extends JavaPlugin {
         //Revive
         pluginManager.registerEvents(new Revive(), this);
         //Telekinese
-        pluginManager.registerEvents(new Telekinese(), this);
+        pluginManager.registerEvents(new UseListener(), this);
     }
     public static Main getMain() {
         return main;

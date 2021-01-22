@@ -1,4 +1,4 @@
-package de.lxca1909.ffaplugin.kits;
+package de.lxca1909.ffaplugin.kits.telekinese;
 
 import de.lxca1909.ffaplugin.Main;
 import de.lxca1909.ffaplugin.listeners.Kits;
