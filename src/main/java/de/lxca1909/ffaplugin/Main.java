@@ -1,8 +1,6 @@
 package de.lxca1909.ffaplugin;
 
-import de.lxca1909.ffaplugin.commands.Build;
-import de.lxca1909.ffaplugin.commands.KitsCMD;
-import de.lxca1909.ffaplugin.commands.TestCMD;
+import de.lxca1909.ffaplugin.commands.*;
 import de.lxca1909.ffaplugin.kits.*;
 import de.lxca1909.ffaplugin.kits.telekinese.Telekinese;
 import de.lxca1909.ffaplugin.kits.telekinese.utils.UseListener;
@@ -34,6 +32,8 @@ public final class Main extends JavaPlugin {
         getCommand("kits").setExecutor(new KitsCMD());
         getCommand("build").setExecutor(new Build());
         getCommand("test").setExecutor(new TestCMD());
+        getCommand("changekit").setExecutor(new ChangekitCommand());
+        getCommand("changekit").setTabCompleter(new ChangekitTabComplet());
     }
     public void listregi(){
         PluginManager pluginManager = Bukkit.getPluginManager();

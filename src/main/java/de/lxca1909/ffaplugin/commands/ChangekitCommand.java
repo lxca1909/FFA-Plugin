@@ -16,11 +16,10 @@ public class ChangekitCommand implements CommandExecutor {
 //            p.sendMessage("Test");
             if(args.length == 0){
                 p.sendMessage("§cDas reicht nicht. Richtiger Syntax: /changekit <kit>");
-            }else if(args.length == 1){
+            }else if(args.length > 1){
                 switch (args[0]){
                     case "ninja":
                         p.sendMessage("ninja");
-                        GetKitItems.getNinjaItems();
                         break;
                     case "stomper":
                         p.sendMessage("Stomper");
