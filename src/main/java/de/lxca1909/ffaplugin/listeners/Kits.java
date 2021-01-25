@@ -274,7 +274,7 @@ public class Kits implements Listener {
                             KangarooKit.add(p.getName());
                             ReviveKit.remove(p.getName());
                             StomperKit.remove(p.getName());
-                            p.getInventory().setItem(1, Kangaroo);
+                            p.getInventory().setItemInOffHand(Kangaroo);
                             p.getInventory().setItem(8, tracker);
                             p.closeInventory();
                         }

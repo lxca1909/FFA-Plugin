@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import de.lxca1909.ffaplugin.Main;
+import de.lxca1909.ffaplugin.listeners.Kits;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
@@ -33,6 +34,7 @@ public class UseListener implements Listener {
 
     @EventHandler
     public void onItemUse(PlayerInteractEvent event) {
+        if(!Kits.TelekineseKit.contains(event.getPlayer().getName()))return;
         if (checkAlmightyHandEvent(event)) return;
         Player player = event.getPlayer();
         String requiredPermission = Permissions.forAlmightyHandUse();
