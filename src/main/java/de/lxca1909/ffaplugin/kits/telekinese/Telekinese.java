@@ -50,7 +50,6 @@ public class Telekinese implements Listener {
                             if(p.getInventory().getItemInMainHand().getType() == Material.FEATHER){
                                 LivingEntity target = LocationUtil.getEntityInLineOfSight((LivingEntity)p, 12.0D);
                                 if(target==null){
-                                    UseListener.
                                 }
                             }
                         }
