@@ -69,6 +69,8 @@ public class Join implements Listener {
         Kits.HolzfaellerKit.remove(p.getName());
         Kits.ReviveKit.remove(p.getName());
         Kits.ClawKit.remove(p.getName());
+        Kits.KangarooKit.remove(p.getName());
+        Kits.TelekineseKit.remove(p.getName());
     }
     @EventHandler
     public void onRespawn(PlayerRespawnEvent e){
@@ -89,7 +91,7 @@ public class Join implements Listener {
     }
     @EventHandler
     public void on(PlayerQuitEvent e){
-
+        e.setQuitMessage("§7[§c-§7] "+e.getPlayer().getName());
     }
     private void resetCooldown(Player p){
         p.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(100D);
