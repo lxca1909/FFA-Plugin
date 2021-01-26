@@ -91,7 +91,7 @@ public class MoreListeners implements Listener {
     public void on(PlayerDeathEvent e){
         ItemStack brown = new ItemStack(Material.BROWN_MUSHROOM, 32);
         ItemStack red = new ItemStack(Material.RED_MUSHROOM, 32);
-        ItemStack bowl = new ItemStack(Material.BOWL);
+        ItemStack bowl = new ItemStack(Material.BOWL, 32);
         e.getDrops().clear();
         e.getDrops().add(brown);
         e.getDrops().add(red);
