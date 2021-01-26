@@ -11,6 +11,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -56,15 +58,30 @@ public class MoreListeners implements Listener {
         }
     }
     @EventHandler
-    public void onDamage(EntityDamageEvent e){
+    public void on(PlayerPickupItemEvent e){
         try{
-            Player p = (Player) e.getEntity();
-            if (Kits.TelekineseKit.contains(p.getName()) || Kits.ReviveKit.contains(p.getName()) || Kits.ClawKit.contains(p.getName()) || Kits.KangarooKit.contains(p.getName()) || Kits.NinjaKit.contains(p.getName()) || Kits.HolzfaellerKit.contains(p.getName()) || Kits.AvatarKit.contains(p.getName()) || Kits.StomperKit.contains(p.getName()))return;
-            if(e.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK){
+            Player p = (Player) e.getPlayer();
+            if (Kits.TelekineseKit.contains(p.getName()) || Kits.ReviveKit.contains(p.getName()) || Kits.ClawKit.contains(p.getName()) || Kits.KangarooKit.contains(p.getName()) || Kits.NinjaKit.contains(p.getName()) || Kits.HolzfaellerKit.contains(p.getName()) || Kits.AvatarKit.contains(p.getName()) || Kits.StomperKit.contains(p.getName())) {
+                e.setCancelled(false);
+            }else
                 e.setCancelled(true);
-            }
+
         }catch (Exception e1){
 
         }
     }
+    @EventHandler
+    public void on(PlayerDropItemEvent e){
+        try{
+            Player p = (Player) e.getPlayer();
+            if (Kits.TelekineseKit.contains(p.getName()) || Kits.ReviveKit.contains(p.getName()) || Kits.ClawKit.contains(p.getName()) || Kits.KangarooKit.contains(p.getName()) || Kits.NinjaKit.contains(p.getName()) || Kits.HolzfaellerKit.contains(p.getName()) || Kits.AvatarKit.contains(p.getName()) || Kits.StomperKit.contains(p.getName())) {
+                e.setCancelled(false);
+            }else
+                e.setCancelled(true);
+
+        }catch (Exception e1){
+
+        }
+    }
+
 }

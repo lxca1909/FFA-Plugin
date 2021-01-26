@@ -20,6 +20,7 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -34,17 +35,20 @@ public class UseListener implements Listener {
 
     @EventHandler
     public void onItemUse(PlayerInteractEvent event) {
-        if(!Kits.TelekineseKit.contains(event.getPlayer().getName()))return;
-        if (checkAlmightyHandEvent(event)) return;
         Player player = event.getPlayer();
-        String requiredPermission = Permissions.forAlmightyHandUse();
-        if (endTelekinesis(player, "&7Telekinese wurde beendet&7."))
-            return;
-        LivingEntity target = LocationUtil.getEntityInLineOfSight((LivingEntity)player, 12.0D);
-        if (target == null)
-            return;
-        startTelekinesisThroughAlmightyHand(player, target);
-        event.setCancelled(true);
+        if(player.getInventory().getItemInMainHand().getType() == Material.FEATHER || player.getInventory().getItemInOffHand().getType() == Material.FEATHER) {
+            if (!Kits.TelekineseKit.contains(event.getPlayer().getName())) return;
+            if(event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK && player.getInventory().getItemInMainHand().getType() != Material.AIR)return;
+            if (checkAlmightyHandEvent(event)) return;
+            String requiredPermission = Permissions.forAlmightyHandUse();
+            if (endTelekinesis(player, "&7Telekinese wurde beendet&7."))
+                return;
+            LivingEntity target = LocationUtil.getEntityInLineOfSight((LivingEntity) player, 12.0D);
+            if (target == null)
+                return;
+            startTelekinesisThroughAlmightyHand(player, target);
+            event.setCancelled(true);
+        }
     }
 
     private boolean checkAlmightyHandEvent(PlayerInteractEvent event) {
