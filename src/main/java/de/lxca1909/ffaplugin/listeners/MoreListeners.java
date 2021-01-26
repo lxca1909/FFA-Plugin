@@ -10,11 +10,16 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import java.util.List;
 
 public class MoreListeners implements Listener {
 
@@ -82,6 +87,16 @@ public class MoreListeners implements Listener {
         }catch (Exception e1){
 
         }
+    }
+    @EventHandler
+    public void on(PlayerDeathEvent e){
+        ItemStack brown = new ItemStack(Material.BROWN_MUSHROOM, 32);
+        ItemStack red = new ItemStack(Material.RED_MUSHROOM, 32);
+        ItemStack bowl = new ItemStack(Material.BOWL);
+        e.getDrops().clear();
+        e.getDrops().add(brown);
+        e.getDrops().add(red);
+        e.getDrops().add(bowl);
     }
 
 }
