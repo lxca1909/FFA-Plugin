@@ -38,7 +38,7 @@ public class UseListener implements Listener {
         if (checkAlmightyHandEvent(event)) return;
         Player player = event.getPlayer();
         String requiredPermission = Permissions.forAlmightyHandUse();
-        if (endTelekinesis(player, "&7You stopped using your &emagical powers&7."))
+        if (endTelekinesis(player, "&7Telekinese wurde beendet&7."))
             return;
         LivingEntity target = LocationUtil.getEntityInLineOfSight((LivingEntity)player, 12.0D);
         if (target == null)
@@ -98,7 +98,7 @@ public class UseListener implements Listener {
 
     private void startTelekinesisThroughAlmightyHand(Player player, LivingEntity target) {
         String targetName = target.getName();
-        String msg = "&7You are now controlling &e" + targetName + "&7.";
+        String msg = "&7Du kontrollierst nun " + targetName +  ".";
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', msg));
         double initialDistanceBetweenPlayers = player.getLocation().distance(target.getLocation());
         TaskHolder taskHolder = new TaskHolder();
@@ -113,19 +113,19 @@ public class UseListener implements Listener {
 
     private void performTargetMovementAction(Player player, LivingEntity target, MovementInfo movementInfo) {
         if (!player.isValid() || !target.isValid()) {
-            endTelekinesis(player, "&7Your &emagical powers&7 faded..");
+            endTelekinesis(player, "&7Deine Kraft verschwand..");
             setPossibleTargetFlying(target, false);
             return;
         }
         Location playerEyeLocation = player.getEyeLocation();
         Location targetLocation = target.getLocation().add(0.0D, target.getHeight() / 2.0D, 0.0D);
         if (playerEyeLocation.getWorld() != targetLocation.getWorld()) {
-            endTelekinesis(player, "&7Your &emagical powers&7 faded..");
+            endTelekinesis(player, "&7Deine Kraft verschwand..");
             return;
         }
         double currentDistanceBetweenPlayers = player.getLocation().distance(target.getLocation());
         if (currentDistanceBetweenPlayers > 35.0D) {
-            endTelekinesis(player, "&7Your target is too far away.");
+            endTelekinesis(player, "&7Der Gegner is zu weit entfernt");
             return;
         }
         double theta = LocationUtil.getRadiansFromYaw(playerEyeLocation.getYaw());
