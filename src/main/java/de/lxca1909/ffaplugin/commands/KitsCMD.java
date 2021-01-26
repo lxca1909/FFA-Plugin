@@ -51,7 +51,7 @@ public class KitsCMD implements CommandExecutor {
         Telekinese.setItemMeta(tmeta);
 
         //Rare
-        ItemStack Holzfaeller = new ItemStack(Material.WOODEN_AXE);
+        ItemStack Holzfaeller = new ItemStack(Material.STONE_AXE);
         ItemMeta HFMeta = Holzfaeller.getItemMeta();
         HFMeta.getItemFlags().add(ItemFlag.HIDE_ATTRIBUTES);
         HFMeta.setLore(null);
