@@ -2,6 +2,7 @@ package de.lxca1909.ffaplugin.listeners;
 
 import de.lxca1909.ffaplugin.commands.Build;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventException;
 import org.bukkit.event.EventHandler;
@@ -14,12 +15,14 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.List;
+import java.util.Random;
 
 public class MoreListeners implements Listener {
 
@@ -89,25 +92,28 @@ public class MoreListeners implements Listener {
     }
     @EventHandler
     public void on(PlayerDeathEvent e){
-        ItemStack brown = new ItemStack(Material.BROWN_MUSHROOM, 32);
-        ItemStack red = new ItemStack(Material.RED_MUSHROOM, 32);
-        ItemStack bowl = new ItemStack(Material.BOWL, 32);
-        if(e.getDrops().contains(Material.TOTEM_OF_UNDYING)){
-            e.getDrops().remove(Material.TOTEM_OF_UNDYING);
-        }
-        if(e.getDrops().contains(Material.FEATHER)){
-            e.getDrops().remove(Material.FEATHER);
-        }
-        if(Kits.HolzfaellerKit.contains(e.getEntity().getName())){
-            if(e.getDrops().contains(Material.STONE_AXE)){
-                e.getDrops().remove(Material.STONE_AXE);
+        ItemStack brown = new ItemStack(Material.BROWN_MUSHROOM, 16);
+        ItemStack red = new ItemStack(Material.RED_MUSHROOM, 16);
+        ItemStack bowl = new ItemStack(Material.BOWL, 16);
+        ItemStack totem = new ItemStack(Material.TOTEM_OF_UNDYING);
+        ItemStack feather = new ItemStack(Material.FEATHER);
+        ItemStack firework = new ItemStack(Material.FIREWORK_ROCKET);
+        ItemStack stoneaxe = new ItemStack(Material.STONE_AXE);
+        for(ItemStack is : e.getEntity().getInventory().getContents()){
+            if(is.getType() == Material.TOTEM_OF_UNDYING){
+                e.getDrops().remove(totem);
             }
-        }
-        if(e.getDrops().contains(Material.FIREWORK_ROCKET)){
-            e.getDrops().remove(Material.FIREWORK_ROCKET);
-        }
-        if(e.getDrops().contains(Material.SHEARS)){
-            e.getDrops().remove(Material.SHEARS);
+            if(is.getType() == Material.FEATHER){
+                e.getDrops().remove(feather);
+            }
+            if(is.getType() == Material.FIREWORK_ROCKET){
+                e.getDrops().remove(firework);
+            }
+            if(Kits.HolzfaellerKit.contains(e.getEntity().getName())){
+                if(is.getType() == Material.STONE_AXE){
+                    e.getDrops().remove(stoneaxe);
+                }
+            }
         }
         e.getDrops().add(brown);
         e.getDrops().add(red);
