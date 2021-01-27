@@ -99,21 +99,154 @@ public class MoreListeners implements Listener {
         ItemStack feather = new ItemStack(Material.FEATHER);
         ItemStack firework = new ItemStack(Material.FIREWORK_ROCKET);
         ItemStack stoneaxe = new ItemStack(Material.STONE_AXE);
-        for(ItemStack is : e.getEntity().getInventory().getContents()){
-            if(is.getType() == Material.TOTEM_OF_UNDYING){
-                e.getDrops().remove(totem);
-            }
-            if(is.getType() == Material.FEATHER){
-                e.getDrops().remove(feather);
-            }
-            if(is.getType() == Material.FIREWORK_ROCKET){
-                e.getDrops().remove(firework);
-            }
-            if(Kits.HolzfaellerKit.contains(e.getEntity().getName())){
-                if(is.getType() == Material.STONE_AXE){
-                    e.getDrops().remove(stoneaxe);
-                }
-            }
+        if(e.getEntity().getInventory().getItem(0).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(1).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(2).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(3).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(4).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(5).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(6).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(7).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(8).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(9).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(10).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(11).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(12).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(13).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(14).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(15).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(16).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(17).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(18).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(19).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(20).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(21).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(22).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(23).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(24).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(25).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(26).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(27).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(28).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(29).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(30).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(31).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(32).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(33).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(34).equals(Material.TOTEM_OF_UNDYING) ||
+           e.getEntity().getInventory().getItem(35).equals(Material.TOTEM_OF_UNDYING)){
+            e.getDrops().remove(totem);
+        }else if(e.getEntity().getInventory().getItem(0).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(1).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(2).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(3).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(4).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(5).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(6).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(7).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(8).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(9).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(10).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(11).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(12).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(13).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(14).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(15).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(16).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(17).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(18).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(19).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(20).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(21).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(22).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(23).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(24).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(25).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(26).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(27).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(28).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(29).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(30).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(31).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(32).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(33).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(34).equals(Material.FEATHER) ||
+                e.getEntity().getInventory().getItem(35).equals(Material.FEATHER)){
+            e.getDrops().remove(feather);
+        }else if(e.getEntity().getInventory().getItem(0).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(1).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(2).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(3).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(4).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(5).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(6).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(7).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(8).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(9).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(10).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(11).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(12).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(13).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(14).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(15).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(16).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(17).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(18).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(19).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(20).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(21).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(22).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(23).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(24).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(25).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(26).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(27).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(28).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(29).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(30).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(31).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(32).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(33).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(34).equals(Material.FIREWORK_ROCKET) ||
+                e.getEntity().getInventory().getItem(35).equals(Material.FIREWORK_ROCKET)){
+            e.getDrops().remove(firework);
+        }else if(e.getEntity().getInventory().getItem(0).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(1).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(2).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(3).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(4).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(5).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(6).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(7).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(8).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(9).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(10).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(11).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(12).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(13).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(14).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(15).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(16).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(17).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(18).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(19).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(20).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(21).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(22).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(23).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(24).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(25).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(26).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(27).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(28).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(29).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(30).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(31).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(32).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(33).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(34).equals(Material.STONE_AXE) ||
+                e.getEntity().getInventory().getItem(35).equals(Material.STONE_AXE)){
+            e.getDrops().remove(stoneaxe);
         }
         e.getDrops().add(brown);
         e.getDrops().add(red);
