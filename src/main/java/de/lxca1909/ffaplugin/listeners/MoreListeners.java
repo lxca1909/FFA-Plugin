@@ -92,7 +92,23 @@ public class MoreListeners implements Listener {
         ItemStack brown = new ItemStack(Material.BROWN_MUSHROOM, 32);
         ItemStack red = new ItemStack(Material.RED_MUSHROOM, 32);
         ItemStack bowl = new ItemStack(Material.BOWL, 32);
-        e.getDrops().clear();
+        if(e.getDrops().contains(Material.TOTEM_OF_UNDYING)){
+            e.getDrops().remove(Material.TOTEM_OF_UNDYING);
+        }
+        if(e.getDrops().contains(Material.FEATHER)){
+            e.getDrops().remove(Material.FEATHER);
+        }
+        if(Kits.HolzfaellerKit.contains(e.getEntity().getName())){
+            if(e.getDrops().contains(Material.STONE_AXE)){
+                e.getDrops().remove(Material.STONE_AXE);
+            }
+        }
+        if(e.getDrops().contains(Material.FIREWORK_ROCKET)){
+            e.getDrops().remove(Material.FIREWORK_ROCKET);
+        }
+        if(e.getDrops().contains(Material.SHEARS)){
+            e.getDrops().remove(Material.SHEARS);
+        }
         e.getDrops().add(brown);
         e.getDrops().add(red);
         e.getDrops().add(bowl);
