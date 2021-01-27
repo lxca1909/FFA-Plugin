@@ -47,11 +47,11 @@ public final class Main extends JavaPlugin {
         //Kits
 
         //Avatar
-        pluginManager.registerEvents(new Avatar(), this); 
+        pluginManager.registerEvents(new Avatar(), this); // CHeck
         //Stomper
-        pluginManager.registerEvents(new Stomper(), this); 
+        pluginManager.registerEvents(new Stomper(), this); //Check
         //Ninja
-        pluginManager.registerEvents(new Ninja(), this); 
+        pluginManager.registerEvents(new Ninja(), this); //CHeck
         //Holzfäller
         pluginManager.registerEvents(new Holzfaeller(), this); 
         //Kangaroo
