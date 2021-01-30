@@ -200,7 +200,6 @@ public class UseListener implements Listener {
         private UseListener.TaskHolder taskHolder;
 
         private LivingEntity target;
-
         private boolean targetWasFlying;
 
         public TelekinesisProcess(UseListener.TaskHolder taskHolder, LivingEntity target, boolean targetWasFlying) {
