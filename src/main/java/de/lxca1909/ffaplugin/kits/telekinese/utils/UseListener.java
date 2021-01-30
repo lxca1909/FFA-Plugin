@@ -139,7 +139,7 @@ public class UseListener implements Listener {
         Location targetDestLocation = playerEyeLocation.add(targetDestOffsetFromUser);
         if (target instanceof Player && isGoodLocation(targetDestLocation)) {
             Bukkit.getScheduler().scheduleSyncDelayedTask((Plugin) Main.getMain(), () -> {
-                emitParticle(targetDestLocation, Color.NAVY, 2);
+                emitParticle(targetDestLocation, Color.WHITE, 2);
                 targetDestLocation.subtract(0.0D, target.getHeight() / 1.9D, 0.0D);
                 target.teleport(targetDestLocation);
             });
@@ -153,7 +153,7 @@ public class UseListener implements Listener {
         }
         if (target.isValid())
             target.setVelocity(targetDestOffset);
-        emitParticle(targetDestLocation, Color.NAVY, 5);
+        emitParticle(targetDestLocation, Color.WHITE, 5);
     }
 
     private double getRadius(Player player, MovementInfo movementInfo) {
