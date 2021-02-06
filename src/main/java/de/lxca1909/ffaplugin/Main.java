@@ -7,7 +7,14 @@ import de.lxca1909.ffaplugin.kits.telekinese.utils.UseListener;
 import de.lxca1909.ffaplugin.listeners.*;
 import de.lxca1909.ffaplugin.recipe.RecipeLoader;
 import de.lxca1909.ffaplugin.util.PlayerCompass;
+import net.minecraft.server.v1_8_R3.EnumParticle;
+import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 

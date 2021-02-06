@@ -5,12 +5,15 @@ import de.lxca1909.ffaplugin.kits.telekinese.utils.LocationUtil;
 import de.lxca1909.ffaplugin.kits.telekinese.utils.UseListener;
 import de.lxca1909.ffaplugin.listeners.Kits;
 import de.lxca1909.ffaplugin.util.Vector3D;
+import net.minecraft.server.v1_8_R3.EnumParticle;
+import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -88,6 +91,18 @@ public class Telekinese implements Listener {
         if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
             if (Kits.KangarooKit.contains(e.getEntity().getName())) {
                 e.setCancelled(true);
+            }
+        }
+    }
+    public void createHelix(Player player) {
+        Location loc = player.getLocation();
+        int radius = 2;
+        for (double y = 0; y <= 50; y += 0.05) {
+            double x = radius * Math.cos(y);
+            double z = radius * Math.sin(y);
+            PacketPlayOutWorldParticles packet = new PacketPlayOutWorldParticles(EnumParticle.DRIP_LAVA, true, (float) (loc.getX() + x), (float) (loc.getY() + y), (float) (loc.getZ() + z), 0, 0, 0, 0, 1);
+            for (Player online : Bukkit.getOnlinePlayers()) {
+                ((CraftPlayer) online).getHandle().playerConnection.sendPacket(packet);
             }
         }
     }
