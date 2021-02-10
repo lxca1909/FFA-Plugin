@@ -7,20 +7,15 @@ import de.lxca1909.ffaplugin.kits.telekinese.utils.UseListener;
 import de.lxca1909.ffaplugin.listeners.*;
 import de.lxca1909.ffaplugin.recipe.RecipeLoader;
 import de.lxca1909.ffaplugin.util.PlayerCompass;
-import net.minecraft.server.v1_8_R3.EnumParticle;
-import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
+import de.slikey.effectlib.EffectManager;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
     private static Main main;
+    public EffectManager effectManager;
 
     @Override
     public void onEnable() {
@@ -29,6 +24,8 @@ public final class Main extends JavaPlugin {
         cmdregi();
         listregi();
         new RecipeLoader().registerRecipes();
+        effectManager = new EffectManager(this);
+
     }
 
     @Override
@@ -69,6 +66,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new Revive(), this);
         //Telekinese
         pluginManager.registerEvents(new UseListener(), this);
+        pluginManager.registerEvents(new Telekinese(), this);
     }
     public static Main getMain() {
         return main;
