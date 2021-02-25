@@ -44,6 +44,7 @@ public class Claw implements Listener {
                             long timeleft = (cooldowns.get(p.getName()) - System.currentTimeMillis()) / 1000;
                             p.sendMessage("§cDeine Fähigkeit ist in §4" + timeleft + "s §cwieder bereit");
                             return;
+
                         }
                     }
                     cooldowns.put(p.getName(), System.currentTimeMillis() + (1 * 1000));
