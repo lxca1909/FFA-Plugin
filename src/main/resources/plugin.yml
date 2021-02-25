@@ -9,3 +9,4 @@ commands:
   build:
   test:
   changekit:
+  partest:

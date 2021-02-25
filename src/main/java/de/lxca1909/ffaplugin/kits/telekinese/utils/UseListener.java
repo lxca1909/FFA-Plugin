@@ -7,15 +7,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import de.lxca1909.ffaplugin.Main;
 import de.lxca1909.ffaplugin.listeners.Kits;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Particle;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,6 +19,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
@@ -46,6 +43,8 @@ public class UseListener implements Listener {
             LivingEntity target = LocationUtil.getEntityInLineOfSight((LivingEntity) player, 12.0D);
             if (target == null)
                 return;
+            player.setVelocity(new Vector(0, 0.75, 0));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 40 ,0));
             startTelekinesisThroughAlmightyHand(player, target);
             event.setCancelled(true);
         }
