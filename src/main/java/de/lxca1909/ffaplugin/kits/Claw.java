@@ -9,13 +9,18 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.EvokerFangs;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 
 import java.util.HashMap;
@@ -42,33 +47,26 @@ public class Claw implements Listener {
                         }
                     }
                     cooldowns.put(p.getName(), System.currentTimeMillis() + (1 * 1000));
-
-                    double newX;
-                    double newZ;
-                    float yaw = p.getLocation().getYaw() + 90;
-
-                    if(yaw < 0) yaw += 360;
-
-                    newX = Math.cos(Math.toRadians(yaw));
-                    newZ = Math.sin(Math.toRadians(yaw));
-
-                    Location loc = new Location(p.getLocation().getWorld(), p.getLocation().getX() + newX, p.getLocation().getY(), p.getLocation().getZ() + newZ, p.getLocation().getYaw(), p.getLocation().getPitch());
-//                    Location loc1 = new Location(p.getLocation().getWorld(), p.getLocation().getX() + newX + newX1, p.getLocation().getY(), p.getLocation().getZ() + newZ, p.getLocation().getYaw(), p.getLocation().getPitch());
-//                    Location loc2 = new Location(p.getLocation().getWorld(), p.getLocation().getX() + newX, p.getLocation().getY(), p.getLocation().getZ() + newZ, p.getLocation().getYaw(), p.getLocation().getPitch());
-//                    Location loc3 = new Location(p.getLocation().getWorld(), p.getLocation().getX() + newX, p.getLocation().getY(), p.getLocation().getZ() + newZ, p.getLocation().getYaw(), p.getLocation().getPitch());
-//                    Location loc4 = new Location(p.getLocation().getWorld(), p.getLocation().getX() + newX, p.getLocation().getY(), p.getLocation().getZ() + newZ, p.getLocation().getYaw(), p.getLocation().getPitch());
-//                    Location loc5 = new Location(p.getLocation().getWorld(), p.getLocation().getX() + newX, p.getLocation().getY(), p.getLocation().getZ() + newZ, p.getLocation().getYaw(), p.getLocation().getPitch());
-//                    Location loc6 = new Location(p.getLocation().getWorld(), p.getLocation().getX() + newX, p.getLocation().getY(), p.getLocation().getZ() + newZ, p.getLocation().getYaw(), p.getLocation().getPitch());
-//                    Location loc7 = new Location(p.getLocation().getWorld(), p.getLocation().getX() + newX, p.getLocation().getY(), p.getLocation().getZ() + newZ, p.getLocation().getYaw(), p.getLocation().getPitch());
-                    p.getWorld().spawnEntity(loc, EntityType.EVOKER_FANGS);
-//                    p.getWorld().spawnEntity(loc1, EntityType.EVOKER_FANGS);
-//                    p.getWorld().spawnEntity(loc2, EntityType.EVOKER_FANGS);
-//                    p.getWorld().spawnEntity(loc3, EntityType.EVOKER_FANGS);
-//                    p.getWorld().spawnEntity(loc4, EntityType.EVOKER_FANGS);
-//                    p.getWorld().spawnEntity(loc5, EntityType.EVOKER_FANGS);
-//                    p.getWorld().spawnEntity(loc6, EntityType.EVOKER_FANGS);
-//                    p.getWorld().spawnEntity(loc7, EntityType.EVOKER_FANGS);
+                    Location start = p.getLocation();
+                    Location start2 = p.getLocation().add(0,2,0);
+                    Vector direction = start.getDirection();
+                    for(int i = 1; i <= (Integer)5; i++){
+                        p.getWorld().spawnEntity(start.clone().add(direction.clone().multiply(i)), EntityType.EVOKER_FANGS).setMetadata(p.getUniqueId().toString(), new FixedMetadataValue(Main.getMain(), ""));
+                        p.getWorld().spawnEntity(start2.clone().add(direction.clone().multiply(i)), EntityType.EVOKER_FANGS).setMetadata(p.getUniqueId().toString(), new FixedMetadataValue(Main.getMain(), ""));
+                    }
                 }
+            }
+        }
+    }
+    @EventHandler
+    public void on(EntityDamageByEntityEvent e){
+        if(e.getEntity() instanceof Player && e.getDamager() instanceof EvokerFangs){
+            Player p = (Player) e.getEntity();
+            EvokerFangs evokerFangs = (EvokerFangs) e.getDamager();
+            if(evokerFangs.getName().equalsIgnoreCase("§9Claw")){
+                e.setCancelled(true);
+            }else {
+                p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 20 * (Integer)5, 255));
             }
         }
     }
